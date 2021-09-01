@@ -52,92 +52,22 @@ test_admin_can_view_all_reviews (test_api.TestListReview) ... FAIL
 test_anonymous_cannot_view_reviews (test_api.TestListReview) ... FAIL
 test_critic_can_view_only_own_reviews (test_api.TestListReview) ... FAIL
 test_user_cannot_view_reviews (test_api.TestListReview) ... FAIL
-test_admin_can_delete_movie (test_api.TestMovieRetrieveDestroyView) ... ERROR
-test_anonymous_can_filter_movies (test_api.TestMovieRetrieveDestroyView) ... FAIL
-test_anonymous_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView) ... FAIL
-test_anonymous_cannot_filter_movies_with_the_invalid_movie_id (test_api.TestMovieRetrieveDestroyView) ... ERROR
-test_anonymous_filter_movie_without_critic (test_api.TestMovieRetrieveDestroyView) ... FAIL
-test_critic_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView) ... FAIL
-test_user_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView) ... FAIL
-test_user_filter_movie_with_critic (test_api.TestMovieRetrieveDestroyView) ... FAIL
-test_admin_can_create_movie (test_api.TestMovieView) ... ERROR
-test_anonymous_can_list_movies (test_api.TestMovieView) ... ERROR
-test_anonymous_cannot_create_movie (test_api.TestMovieView) ... FAIL
-test_critic_cannot_create_movie (test_api.TestMovieView) ... FAIL
-test_filter_movies_with_the_filter_request (test_api.TestMovieView) ... ERROR
-test_genre_cannot_repeat (test_api.TestMovieView) ... ERROR
-test_output_format_data (test_api.TestMovieView) ... ERROR
-test_user_cannot_create_movie (test_api.TestMovieView) ... FAIL
-
-======================================================================
-ERROR: test_admin_can_delete_movie (test_api.TestMovieRetrieveDestroyView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 407, in test_admin_can_delete_movie
-    self.assertEqual(len(movies.json()), 1)
-  File "/home/bentz/projects/q4/kmdb/venv/lib/python3.9/site-packages/django/test/client.py", line 662, in _parse_json
-    raise ValueError(
-ValueError: Content-Type header is "text/html", not "application/json"
-
-======================================================================
-ERROR: test_anonymous_cannot_filter_movies_with_the_invalid_movie_id (test_api.TestMovieRetrieveDestroyView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 334, in test_anonymous_cannot_filter_movies_with_the_invalid_movie_id
-    self.assertEqual(movies_filter.json(), {"detail": "Not found."})
-  File "/home/bentz/projects/q4/kmdb/venv/lib/python3.9/site-packages/django/test/client.py", line 662, in _parse_json
-    raise ValueError(
-ValueError: Content-Type header is "text/html", not "application/json"
-
-======================================================================
-ERROR: test_admin_can_create_movie (test_api.TestMovieView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 83, in test_admin_can_create_movie
-    self.assertEqual(movie.json()["id"], 1)
-  File "/home/bentz/projects/q4/kmdb/venv/lib/python3.9/site-packages/django/test/client.py", line 662, in _parse_json
-    raise ValueError(
-ValueError: Content-Type header is "text/html", not "application/json"
-
-======================================================================
-ERROR: test_anonymous_can_list_movies (test_api.TestMovieView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 151, in test_anonymous_can_list_movies
-    movies_list = client.get("/api/movies/", format="json").json()
-  File "/home/bentz/projects/q4/kmdb/venv/lib/python3.9/site-packages/django/test/client.py", line 662, in _parse_json
-    raise ValueError(
-ValueError: Content-Type header is "text/html", not "application/json"
-
-======================================================================
-ERROR: test_filter_movies_with_the_filter_request (test_api.TestMovieView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 189, in test_filter_movies_with_the_filter_request
-    movie_1 = self.client.post(
-  File "/home/bentz/projects/q4/kmdb/venv/lib/python3.9/site-packages/django/test/client.py", line 662, in _parse_json
-    raise ValueError(
-ValueError: Content-Type header is "text/html", not "application/json"
-
-======================================================================
-ERROR: test_genre_cannot_repeat (test_api.TestMovieView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 166, in test_genre_cannot_repeat
-    movie_1 = self.client.post(
-  File "/home/bentz/projects/q4/kmdb/venv/lib/python3.9/site-packages/django/test/client.py", line 662, in _parse_json
-    raise ValueError(
-ValueError: Content-Type header is "text/html", not "application/json"
-
-======================================================================
-ERROR: test_output_format_data (test_api.TestMovieView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 226, in test_output_format_data
-    movie_1 = self.client.post(
-  File "/home/bentz/projects/q4/kmdb/venv/lib/python3.9/site-packages/django/test/client.py", line 662, in _parse_json
-    raise ValueError(
-ValueError: Content-Type header is "text/html", not "application/json"
+test_admin_can_delete_movie (test_api.TestMovieRetrieveDestroyView) ... ok
+test_anonymous_can_filter_movies (test_api.TestMovieRetrieveDestroyView) ... ok
+test_anonymous_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView) ... ok
+test_anonymous_cannot_filter_movies_with_the_invalid_movie_id (test_api.TestMovieRetrieveDestroyView) ... ok
+test_anonymous_filter_movie_without_critic (test_api.TestMovieRetrieveDestroyView) ... ok
+test_critic_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView) ... ok
+test_user_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView) ... ok
+test_user_filter_movie_with_critic (test_api.TestMovieRetrieveDestroyView) ... ok
+test_admin_can_create_movie (test_api.TestMovieView) ... ok
+test_anonymous_can_list_movies (test_api.TestMovieView) ... ok
+test_anonymous_cannot_create_movie (test_api.TestMovieView) ... ok
+test_critic_cannot_create_movie (test_api.TestMovieView) ... ok
+test_filter_movies_with_the_filter_request (test_api.TestMovieView) ... ok
+test_genre_cannot_repeat (test_api.TestMovieView) ... ok
+test_output_format_data (test_api.TestMovieView) ... ok
+test_user_cannot_create_movie (test_api.TestMovieView) ... ok
 
 ======================================================================
 FAIL: test_admin_cannot_create_review (test_api.TestCriticismReviewView)
@@ -235,80 +165,8 @@ Traceback (most recent call last):
     self.assertEqual(response.status_code, 403)
 AssertionError: 404 != 403
 
-======================================================================
-FAIL: test_anonymous_can_filter_movies (test_api.TestMovieRetrieveDestroyView)
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 327, in test_anonymous_can_filter_movies
-    self.assertEqual(movies_filter.status_code, 200)
-AssertionError: 404 != 200
+Ran 38 tests in 14.124s
 
-======================================================================
-FAIL: test_anonymous_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 385, in test_anonymous_cannot_delete_movies
-    self.assertEqual(movie_delete.status_code, 401)
-AssertionError: 404 != 401
-
-======================================================================
-FAIL: test_anonymous_filter_movie_without_critic (test_api.TestMovieRetrieveDestroyView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 438, in test_anonymous_filter_movie_without_critic
-    self.assertEqual(movies_filter.status_code, 200)
-AssertionError: 404 != 200
-
-======================================================================
-FAIL: test_critic_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 349, in test_critic_cannot_delete_movies
-    self.assertEqual(status_code, 403)
-AssertionError: 404 != 403
-
-======================================================================
-FAIL: test_user_cannot_delete_movies (test_api.TestMovieRetrieveDestroyView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 364, in test_user_cannot_delete_movies
-    self.assertEqual(status_code, 403)
-AssertionError: 404 != 403
-
-======================================================================
-FAIL: test_user_filter_movie_with_critic (test_api.TestMovieRetrieveDestroyView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 470, in test_user_filter_movie_with_critic
-    self.assertEqual(movies_filter.status_code, 200)
-AssertionError: 404 != 200
-
-======================================================================
-FAIL: test_anonymous_cannot_create_movie (test_api.TestMovieView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 127, in test_anonymous_cannot_create_movie
-    self.assertEqual(response.status_code, 401)
-AssertionError: 404 != 401
-
-======================================================================
-FAIL: test_critic_cannot_create_movie (test_api.TestMovieView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 101, in test_critic_cannot_create_movie
-    self.assertEqual(status_code, 403)
-AssertionError: 404 != 403
-
-======================================================================
-FAIL: test_user_cannot_create_movie (test_api.TestMovieView)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/bentz/projects/q4/kmdb/test_api.py", line 119, in test_user_cannot_create_movie
-    self.assertEqual(status_code, 403)
-AssertionError: 404 != 403
-
-----------------------------------------------------------------------
-Ran 38 tests in 13.758s
-
-FAILED (failures=21, errors=7)
+FAILED (failures=12)
 Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...

@@ -12,15 +12,20 @@ class MovieView(ListCreateAPIView):
     permission_classes = [IsAdmin]
 
     queryset = Movie.objects.all()
-    # print(MovieSerializer.Meta.fields)
-    # MovieSerializer.Meta.fields = ["id", "genres"]
     serializer_class = MovieSerializer
  
+    def get(self, request, *args, **kwargs):
+        title = request.data.get("title")
+        if title:
+            self.queryset = self.queryset.filter(title__icontains=title)
+
+        return self.list(request, *args, **kwargs)
 
 
 class MovieDetailView(RetrieveDestroyAPIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAdmin | IsCritic]
+    permission_classes = [IsAdmin]
+
 
     queryset = Movie.objects.all()
     
@@ -29,4 +34,5 @@ class MovieDetailView(RetrieveDestroyAPIView):
     def get_serializer_class(self):
         if self.request.method == 'GET' and self.request.user.is_authenticated:
             return MovieReviewSerializer
+        
         return MovieSerializer
