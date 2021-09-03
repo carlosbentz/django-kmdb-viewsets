@@ -6,7 +6,6 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from django.db import IntegrityError
 from .serializers import UserSerializer, LoginSerializer
-from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 
 class SignupView(APIView):

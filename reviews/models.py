@@ -7,11 +7,11 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Review(models.Model):
     stars = models.IntegerField(
         validators=[
-            MaxValueValidator(100),
+            MaxValueValidator(10),
             MinValueValidator(1)
         ]
     )
     review = models.TextField()
     spoilers = models.BooleanField(default=False)
-    user = models.ForeignKey(User, related_name="reviews", on_delete=models.CASCADE)
+    critic = models.ForeignKey(User, related_name="reviews", on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, related_name="reviews", on_delete=models.CASCADE)

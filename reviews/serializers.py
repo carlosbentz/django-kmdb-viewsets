@@ -1,18 +1,15 @@
 from rest_framework import serializers
-from django.shortcuts import get_object_or_404
 from .models import Review
-from rest_framework.response import Response
-from rest_framework import status
+from accounts.serializers import UserSerializer, CriticSerializer
 
 
 class ReviewSerializer(serializers.ModelSerializer):    
+    critic = CriticSerializer(read_only=True)
+    critic_id = serializers.IntegerField(write_only=True)
+    movie_id = serializers.IntegerField(write_only=True)
+
     class Meta:
         model = Review
-        fields = ["id", "stars", "review", "spoilers"]
-        
-        
-        extra_kwargs = {
-            "id": {"read_only": True}
-        }
-        
+        exclude = ["movie"]
+
         depth = 1

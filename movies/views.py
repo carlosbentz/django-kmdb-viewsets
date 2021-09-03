@@ -1,9 +1,6 @@
-from rest_framework import serializers, status
-from rest_framework.views import APIView
-from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveDestroyAPIView, RetrieveAPIView, DestroyAPIView
-from rest_framework.response import Response
+from rest_framework.generics import ListCreateAPIView, RetrieveDestroyAPIView, RetrieveAPIView, DestroyAPIView
 from .serializers import MovieSerializer, MovieReviewSerializer
-from .models import Movie, Genre
+from .models import Movie
 from rest_framework.authentication import TokenAuthentication
 from accounts.permissions import IsAdmin, IsCritic
 
@@ -29,10 +26,10 @@ class MovieDetailView(RetrieveDestroyAPIView):
 
     queryset = Movie.objects.all()
     
-    lookup_field = 'id'
+    lookup_field = "id"
 
     def get_serializer_class(self):
-        if self.request.method == 'GET' and self.request.user.is_authenticated:
+        if self.request.method == "GET" and self.request.user.is_authenticated:
             return MovieReviewSerializer
         
         return MovieSerializer
